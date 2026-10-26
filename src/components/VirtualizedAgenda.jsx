@@ -1,0 +1,7 @@
+import { useMemo, useState } from 'react'
+import { formatDate, statusLabel } from '../utils/allocation'
+const ROW=78,HEIGHT=560,OVERSCAN=5
+export default function VirtualizedAgenda({items,onSelect,total}){
+ const [scrollTop,setScrollTop]=useState(0);const sorted=useMemo(()=>[...items].sort((a,b)=>a.start_date.localeCompare(b.start_date)||a.id-b.id),[items]);const first=Math.max(0,Math.floor(scrollTop/ROW)-OVERSCAN),visible=Math.ceil(HEIGHT/ROW)+OVERSCAN*2,last=Math.min(sorted.length,first+visible),slice=sorted.slice(first,last)
+ return <section className="agendaCard calendarSurface"><div className="panelHeading"><div><span className="eyebrow">AGENDA</span><h2>Allocation agenda</h2></div><small>{total??items.length} result{(total??items.length)===1?'':'s'}</small></div><div className="virtualAgenda" style={{height:HEIGHT}} onScroll={e=>setScrollTop(e.currentTarget.scrollTop)}><div style={{height:sorted.length*ROW,position:'relative'}}>{slice.map((a,i)=><button key={a.id} className={`agendaRow calendarStatus-${String(a.status).toLowerCase()}`} style={{position:'absolute',top:(first+i)*ROW,left:0,right:0,height:ROW-6}} onClick={()=>onSelect?.(a)}><div><b>{formatDate(a.start_date)}</b><span>to {formatDate(a.end_date)}</span></div><div><strong>{a.employee_name}</strong><span>{a.project_name}</span></div><b>{a.allocation_percentage}%</b><span className={`status ${String(a.status).toLowerCase()}`}>{statusLabel(a.status)}</span></button>)}</div>{!items.length&&<div className="emptyState">No allocations in this range.</div>}</div></section>
+}

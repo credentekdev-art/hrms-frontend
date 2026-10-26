@@ -1,0 +1,5 @@
+import { Info, Star } from 'lucide-react'
+export default function EmployeeSuggestionList({items,loading}){
+  if(!loading&&!items.length)return null
+  return <section className="employeeSuggestions" aria-live="polite"><div className="panelHeading"><h3>Matching employees</h3>{loading&&<span className="meta">Updating…</span>}</div><div className="suggestionRows">{items.map(e=><article className="suggestionRow" key={e.id}><div className="employeeMini"><div className="avatar">{e.name.split(' ').map(x=>x[0]).slice(0,2).join('')}</div><div><strong>{e.name}</strong><span>{e.employee_code}{e.designation?` · ${e.designation}`:''}</span></div></div><span>{e.experience!=null?`${Number(e.experience).toFixed(1)} yrs`:'—'}</span><span className="rating">{e.last_feedback_rating!=null?<><Star fill="currentColor"/>{e.last_feedback_rating}/5</>:'No rating'}</span><span className="infoPopoverWrap"><button type="button" className="infoButton" aria-label={`Last feedback for ${e.name}`}><Info/></button><span className="infoPopover" role="tooltip">{e.last_feedback_description||'No feedback yet'}</span></span></article>)}</div></section>
+}

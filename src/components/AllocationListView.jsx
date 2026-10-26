@@ -1,0 +1,6 @@
+import { allocationCoversDate, formatDate, statusLabel, utilizationClass, utilizationOnDate } from '../utils/allocation'
+export default function AllocationListView({allocations,employees,projects,onSelect}){
+ const empMap=Object.fromEntries(employees.map(e=>[e.id,e])),projectMap=Object.fromEntries(projects.map(p=>[p.id,p]))
+ const today=new Date().toISOString().slice(0,10)
+ return <div className="calendarList">{[...allocations].sort((a,b)=>a.start_date.localeCompare(b.start_date)).map(a=>{const util=allocationCoversDate(a,today)?utilizationOnDate(allocations,a.employee_id,today):a.allocation_percentage;return <button className="calendarListItem" key={a.id} onClick={()=>onSelect?.(a)}><div className="dateRange"><b>{formatDate(a.start_date)}</b><span>to {formatDate(a.end_date)}</span></div><div className="employeeMini"><div className="avatar">{(empMap[a.employee_id]?.name||'?').split(' ').map(x=>x[0]).slice(0,2).join('')}</div><div><strong>{empMap[a.employee_id]?.name||a.employee_id}</strong><span>{projectMap[a.project_id]?.name||a.project_id}</span></div></div><span className={`legendChip ${utilizationClass(util)}`}>{a.allocation_percentage}%</span><span className={`status ${String(a.status).toLowerCase()}`}>{statusLabel(a.status)}</span></button>})}{!allocations.length&&<div className="emptyState">No allocations found for this period.</div>}</div>
+}

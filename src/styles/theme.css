@@ -1,0 +1,86 @@
+:root {
+  --font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-page-title: 1.25rem;      /* 20px */
+  --font-section-title: 1rem;     /* 16px */
+  --font-card-title: .875rem;     /* 14px */
+  --font-body: .8125rem;          /* 13px */
+  --font-table: .8125rem;         /* 13px */
+  --font-label: .8125rem;         /* 13px */
+  --font-meta: .75rem;            /* 12px */
+  --font-control: .8125rem;       /* 13px */
+  --font-body-lg: .875rem;
+  --font-heading-sm: .875rem;
+  --font-heading-md: 1rem;
+  --font-heading-lg: 1.25rem;
+  --font-display: 1.5rem;
+  --line-tight: 1.35;
+  --line-body: 1.45;
+
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+
+  --control-height-sm: 2rem;
+  --control-height: 2.25rem;
+  --control-height-lg: 2.25rem;
+  --compact-action-height: 2rem;
+  --compact-action-font: .8125rem;
+
+  --radius-sm: .375rem;
+  --radius-md: .5rem;
+  --radius-lg: .5rem;
+  --sidebar-width: 15.5rem;
+  --sidebar-collapsed-width: 4.5rem;
+
+  --surface: #ffffff;
+  --surface-soft: #f7f9fc;
+  --surface-muted: #eef3f8;
+  --surface-hover: #f2f6fa;
+  --text: #172538;
+  --text-muted: #647487;
+  --text-soft: #7b8999;
+  --border: #dce4ec;
+  --border-strong: #cbd6e1;
+  --primary: #0b67c2;
+  --primary-dark: #0755a3;
+  --primary-soft: #eaf4ff;
+  --success: #19845f;
+  --success-soft: #eaf8f2;
+  --warning: #a9670a;
+  --warning-soft: #fff5df;
+  --danger: #c54053;
+  --danger-soft: #fff0f2;
+  --neutral: #6f7e8e;
+  --neutral-soft: #f0f3f6;
+  --nav: #071b30;
+  --nav-soft: #0d2a46;
+  --shadow: 0 .25rem .75rem rgba(22, 48, 74, .07);
+  --shadow-lg: 0 1rem 2.5rem rgba(7, 27, 48, .18);
+  font-family: var(--font-family);
+  font-size: 16px;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; margin: 0; }
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-body);
+  line-height: var(--line-body);
+  color: var(--text);
+  background: var(--surface-soft);
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font-family: var(--font-family); font-size: var(--font-control); }
+button, input, select { min-height: var(--control-height); }
+textarea { min-height: 5.5rem; }
+label, .label { font-size: var(--font-label); line-height: 1.4; }
+small, .eyebrow, .muted, .fieldHelp, .caption, .meta { font-size: var(--font-meta); line-height: 1.4; }
+table, p, li, td { font-size: var(--font-body); }
+h1, h2, h3, h4 { line-height: var(--line-tight); color: var(--text); }
+h1 { font-size: var(--font-page-title); font-weight: 600; }
+h2 { font-size: var(--font-section-title); font-weight: 600; }
+h3, h4 { font-size: var(--font-card-title); font-weight: 600; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid #3e8ed8; outline-offset: 2px; }
