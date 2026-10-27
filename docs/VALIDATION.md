@@ -146,3 +146,17 @@ This matches the current lockfile Vitest version, 2.1.9. Coverage CI remains blo
 
 ✖ 28 problems (0 errors, 28 warnings)
 ```
+
+## Deployment setup update
+
+Coverage provider @vitest/coverage-v8@2.1.9 is now installed and committed separately.
+The owner reports 7 npm audit vulnerabilities, including 3 critical; frontend audit
+is a non-blocking known issue. No automatic audit fixes were run. Both repositories
+have separate release workflows and runners; backend must release before frontend.
+Deployment files are prepared locally, not installed or runtime-validated on server.
+Scheduler settings and first-admin creation require developer confirmation.
+
+Release update: direct server connectivity works; proxy settings are optional.
+Only manual dispatch and develop/main pushes can trigger the guarded release jobs.
+Activation failures attempt automatic previous-release rollback; SQLite is not
+automatically restored/downgraded. Runtime installation remains pending.
